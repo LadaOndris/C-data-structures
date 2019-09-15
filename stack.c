@@ -1,6 +1,6 @@
 #include "stack.h"
 #include <stdlib.h>
-#include <cstddef>
+#include <stddef.h>
 
 stack_object_t *stack_object_create() {
 	stack_object_t *object = (stack_object_t *)malloc(sizeof(stack_object_t));

@@ -1,12 +1,12 @@
 
 CPPUTEST_HOME = /home/ladislavondris/cpputest
 SRC_HOME = /home/ladislavondris/projects/C-data-structures
-TESTS_DIR = $(tests)
+TESTS_DIR = tests
 
-CPPFLAGS += -I$(CPPUTEST_HOME)/include -I$(SRC_HOME)/$(TESTS_DIR)
-CXXFLAGS += -include $(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorNewMacros.h
-CFLAGS += -Wall -Wextra -pedantic -g 
-TEST_CLAGS = -include $(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorMallocMacros.h
+CPPFLAGS += -I$(CPPUTEST_HOME)/include -I$(SRC_HOME)
+CXXFLAGS += "" # -include $(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorNewMacros.h
+CFLAGS += -std=c++11 -Wall -Wextra -pedantic -g 
+TEST_CLAGS = "" # -include $(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorMallocMacros.h
 
 TEST_FLAGS = $(CPPFLAGS)
 TEST_FLAGS += $(CXXFLAGS)
@@ -22,7 +22,7 @@ SRC_OBJS := $(patsubst %.c, %.o, $(SRCS)) # Convert source .c files to .o files
 
 .PHONY: main test clean
 
-main: $(SRC_OBJS)
+main: $(SRC_OBJS) main.o
 	$(eval TEST_FLAGS = "")
 	$(CC) $(CFLAGS) -o $@ $^ 
 
@@ -36,4 +36,5 @@ clean:
 	rm -rf tests/*.o
 	rm -rf *.o
 	rm -rf test
+	rm -rg main
 

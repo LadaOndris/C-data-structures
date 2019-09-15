@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include <cstddef>
+#include <stddef.h>
 
 typedef struct stack_object {
 	struct stack_object *previous;
